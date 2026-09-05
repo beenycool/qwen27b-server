@@ -3,15 +3,16 @@ set -e
 
 export LD_LIBRARY_PATH=/app:/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 
+MODEL_PATH="/models/Qwen3.8-27B-Uncensored.Q5_K_M.gguf"
+
 echo "=========================================="
-echo "Starting Qwen 27B Llama.cpp Server"
-echo "Host: ${LLAMA_ARG_HOST:-::}"
+echo "Starting Qwen 27B Baked-Model Llama.cpp Server"
+echo "Model: ${MODEL_PATH}"
 echo "Port: ${LLAMA_ARG_PORT:-8080}"
 echo "=========================================="
 
 exec /app/llama-server \
-  --hf-repo "${LLAMA_ARG_HF_REPO:-mradermacher/Qwen3.8-27B-Uncensored-GGUF}" \
-  --hf-file "${LLAMA_ARG_HF_FILE:-Qwen3.8-27B-Uncensored.Q5_K_M.gguf}" \
+  -m "${MODEL_PATH}" \
   --host "${LLAMA_ARG_HOST:-::}" \
   --port "${LLAMA_ARG_PORT:-8080}" \
   -c "${LLAMA_ARG_CTX_SIZE:-131072}" \
