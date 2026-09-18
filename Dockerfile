@@ -11,8 +11,8 @@ RUN curl -sL https://github.com/cloudflare/cloudflared/releases/latest/download/
 RUN mkdir -p /models && \
     aria2c -x 16 -s 16 -j 16 -k 1M -c \
     --summary-interval=10 \
-    -d /models -o Qwen3.8-27B-Uncensored.Q5_K_M.gguf \
-    "https://huggingface.co/mradermacher/Qwen3.8-27B-Uncensored-GGUF/resolve/main/Qwen3.8-27B-Uncensored.Q5_K_M.gguf?download=true"
+    -d /models -o Qwen3.8-27B-TurboFCFusion-735-882-Here-Uncen-NEO-CODER-MAX-MTP-Q5_K_M.gguf \
+    "https://huggingface.co/DavidAU/Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NEO-CODER-MAX-MTP-GGUF/resolve/main/Qwen3.8-27B-TurboFCFusion-735-882-Here-Uncen-NEO-CODER-MAX-MTP-Q5_K_M.gguf?download=true"
 
 COPY entrypoint.sh /app/entrypoint.sh
 RUN chmod +x /app/entrypoint.sh

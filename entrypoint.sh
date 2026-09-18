@@ -3,7 +3,7 @@ set -e
 
 export LD_LIBRARY_PATH=/app:/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 
-MODEL_PATH="/models/Qwen3.8-27B-Uncensored.Q5_K_M.gguf"
+MODEL_PATH="/models/Qwen3.8-27B-TurboFCFusion-735-882-Here-Uncen-NEO-CODER-MAX-MTP-Q5_K_M.gguf"
 PORT="${LLAMA_ARG_PORT:-8080}"
 
 echo "=========================================="
@@ -26,7 +26,7 @@ echo "=========================================="
   -b 2048 \
   -ub 512 \
   --threads 8 \
-  --alias "${LLAMA_ARG_ALIAS:-orcarouter/Qwen3.8-27B-Uncensored:q6_K}" \
+  --alias "${LLAMA_ARG_ALIAS:-orcarouter/Qwen3.8-27B-TurboFCFusion-NEO-CODER-MAX:q5_K_M}" \
   --jinja \
   --reasoning-effort "${LLAMA_ARG_REASONING_EFFORT:-medium}" \
   --reasoning-budget "${LLAMA_ARG_REASONING_BUDGET:-1024}" \
