@@ -63,9 +63,9 @@ echo "=========================================="
   --flash-attn on \
   --cache-type-k "${LLAMA_ARG_CACHE_TYPE_K:-q4_0}" \
   --cache-type-v "${LLAMA_ARG_CACHE_TYPE_V:-q4_0}" \
-  -b 2048 \
-  -ub 512 \
-  --threads 8 \
+  -b "${LLAMA_ARG_BATCH:-2048}" \
+  -ub "${LLAMA_ARG_UBATCH:-512}" \
+  --threads "${LLAMA_ARG_THREADS:-8}" \
   --alias "${LLAMA_ARG_ALIAS:-orcarouter/Qwen3.8-27B-TurboFCFusion-NEO-CODER-MAX:q5_K_M}" \
   --jinja \
   ${SPEC_ARGS} \
@@ -74,7 +74,8 @@ echo "=========================================="
   --reasoning-format "${LLAMA_ARG_REASONING_FORMAT:-deepseek}" \
   --temp "${LLAMA_SERVER_TEMP:-0.7}" \
   --top-p "${LLAMA_SERVER_TOP_P:-0.95}" \
-  --min-p "${LLAMA_SERVER_MIN_P:-0.05}" &
+  --top-k "${LLAMA_SERVER_TOP_K:-20}" \
+  --min-p "${LLAMA_SERVER_MIN_P:-0.0}" &
 LLAMA_PID=$!
 
 echo "Waiting for llama-server to be ready on port ${PORT}..."
